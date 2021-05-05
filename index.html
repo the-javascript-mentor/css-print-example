@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Select value as text</title>
+    <style>
+      #selection {
+        display: none;
+      }
+      @media print {
+        @page {
+          margin: 0;
+        }
+        #selection {
+          display: initial;
+        }
+        #dropdown {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <select id="dropdown">
+      <option value="This">This</option>
+      <option value="That">That</option>
+      <option value="Other">Other</option>
+    </select>
+    <span id="selection">This</span>
+    <script>
+      const dropdownElement = document.getElementById("dropdown");
+      const selectionElement = document.getElementById("selection");
+
+      dropdownElement.addEventListener("change", (event) => {
+        const selectedItem = event.target.value;
+        selectionElement.innerHTML = selectedItem;
+      });
+    </script>
+  </body>
+</html>
